@@ -219,7 +219,7 @@ private:
         }
       }
       catch (double x ) {
-          std::cerr << "Error getting response from arduino nano, wasted much time \n";
+          std::cerr << "Error getting response from the microcontroller, wasted much time \n";
       }
       
     }
