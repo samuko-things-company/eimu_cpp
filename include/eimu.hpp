@@ -166,23 +166,20 @@ public:
     val[3] = 0.0;
   }
 
-  void getRefFrame(std::string &ref_frame)
+  void getRefFrame(int &ref_frame_id) // 0 - NWU,  1 - ENU,  2 - NED
   {
     get("/frame-id");
-
-    int frame_id = (int)val[0];
-
-    if(frame_id == 0)
-      ref_frame = "NWU";
-    else if (frame_id == 1)
-      ref_frame = "ENU";
-    else if (frame_id == 2)
-      ref_frame = "NED";
+    ref_frame_id = (int)val[0];
 
     val[0] = 0.0;
     val[1] = 0.0;
     val[2] = 0.0;
     val[3] = 0.0;
+  }
+
+  bool setRefFrame(int ref_frame_id) // 0 - NWU,  1 - ENU,  2 - NED
+  {
+    return send("/frame-id", (float)ref_frame_id);
   }
 
 private:
@@ -222,7 +219,7 @@ private:
         }
       }
       catch (double x ) {
-          std::cerr << "Error getting response from arduino nano, wasted much time \n";
+          std::cerr << "Error getting response from the microcontroller, wasted much time \n";
       }
       
     }
@@ -231,9 +228,9 @@ private:
   }
 
 
-  bool send(std::string cmd_route, float valA, float valB) {
+  bool send(std::string cmd_route, float val) {
     std::stringstream msg_stream;
-    msg_stream << cmd_route << "," << valA << "," << valB;
+    msg_stream << cmd_route << "," << val;
     
     std::string res = send_msg(msg_stream.str());
 
