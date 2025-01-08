@@ -3,7 +3,7 @@ This library helps communicate with the already setup **`Easy IMU Module`** (**`
 
 > you can use it in your microcomputer robotics project **running on linux** (e.g Raspberry Pi, PC, etc.)
 
-A simple way to get started is simply to try out and follow the example code in the example folder
+A simple way to get started is simply to try out and follow the example code in the src folder
 
 ## Dependencies
 - you'll need to install the `libserial` library
@@ -23,7 +23,7 @@ A simple way to get started is simply to try out and follow the example code in 
 
 - Connect the **Easy IMU Module** to your PC or microcomputer
 
-- A simple way to get started is simply to try out and follow the example `read_rpy.cpp` code.
+- A simple way to get started is simply to try out and follow the example `read_rpy.cpp` code in the src folder.
 
 - make, build and run the example code.
   > cd into the root directory
